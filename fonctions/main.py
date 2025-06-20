@@ -40,10 +40,35 @@ if age == 0:
 afficher_info_perso("toto", "20") # appel de la fonction
 print("est majeur", est_majeur(18))"""
 
-def recuperer_et_afficher_info_personne(numero_personne):
-    nom = input("Nom de la personne" + numero_personne + ": ")
-    age = input("Age de la personne" + numero_personne + ": ")
+#Retourner plusieurs valeurs avec des fonctions
+def est_majeur(age: int):
+    if age <= 0:
+        return False
+    
+    if age >= 18:
+        return True
+    return False
+
+def recuperer_info_personne(numero_personne):
+    nom = input("Nom de la personne" + str(numero_personne) + ": ")
+    age = input("Age de la personne" + str(numero_personne) + ": ")
+    return nom, int(age) # convertir la valeur
+
+def afficher_info_personne(numero_personne, nom, age: int):
     print("la personne est", nom, "son age est de", age, "ans")
     print("Cette personne porte le numero ", numero_personne)
+    if est_majeur(age):
+        print("il est majeur")
+    else:
+        print("il est mineur")
 
-recuperer_et_afficher_info_personne(1)
+def recuperer_et_afficher_info_personne(numero_personne):
+    nom, age = recuperer_info_personne(numero_personne) # attention l'ordre est important !
+    afficher_info_personne(numero_personne, nom, age)
+
+nb_personnes = 2
+
+for i in range(nb_personnes):
+    recuperer_et_afficher_info_personne(i+1)
+
+afficher_info_personne("007", "James", 40)
