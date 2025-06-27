@@ -156,3 +156,38 @@ if element_dans_liste("JEans", noms):
     print("Jean est là")
 else:
     print("Jean n'est pas là")
+
+
+
+# --- Exercice "Extraire les extensions" ---
+
+fichiers = ["notepad.exe", "mon.fichier.perso.doc", "notes.TXT", "vacances.jpeg", "planning", "data.dat"]
+
+definition_extensions = (("exe", "Executable"),
+                         ("doc", "Document Word"),
+                         ("txt", "Document Texte"),
+                         ("jpeg", "Image JPEG")
+                         )
+
+# lower/upper V
+# in / index /for
+# split V
+# -1 V
+
+
+dico_definitions = {ext.lower(): desc for ext, desc in definition_extensions}
+
+for fichier in fichiers:
+    morceaux = fichier.split(".")
+    if len(morceaux) > 1:
+        extension = morceaux[-1]
+        description = dico_definitions.get(extension.lower(), "Inconnu")
+        print(f"{fichier} ({description})")
+    else:
+        print(f"{fichier} (Aucune Extension)")
+
+
+
+
+
+
