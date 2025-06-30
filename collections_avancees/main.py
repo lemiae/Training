@@ -174,8 +174,8 @@ definition_extensions = (("exe", "Executable"),
 # split V
 # -1 V
 
-
-dico_definitions = {ext.lower(): desc for ext, desc in definition_extensions}
+#Avec un dictionnaire :
+"""dico_definitions = {ext.lower(): desc for ext, desc in definition_extensions}
 
 for fichier in fichiers:
     morceaux = fichier.split(".")
@@ -184,10 +184,69 @@ for fichier in fichiers:
         description = dico_definitions.get(extension.lower(), "Inconnu")
         print(f"{fichier} ({description})")
     else:
-        print(f"{fichier} (Aucune Extension)")
+        print(f"{fichier} (Aucune Extension)")"""
 
+#extraire extension
+#faire correspondance def
+def extraire_extension(fichier):
+    fichier_split = fichier.split(".")
+    if len(fichier_split) > 1:
+        return fichier_split[-1]
+    return None
 
+def get_extension_def(extension, definitions):
+    for d in definitions:
+        if d[0].lower() == extension.lower():
+            return d[1]
+    return None
 
+for fichier in fichiers:
+    ext = extraire_extension(fichier)
+    if ext:
+        definition = get_extension_def(ext, definition_extensions)
+        if not definition:
+            definition = "Extension non connue"
+    else:
+        definition = "Aucune extension"
+    print(fichier + " (" + definition + ")")
 
+# --- Exercice "Nombre total de caractères" ---
 
+noms = ["jean", "Sophie", "Martin", "Christophe", "Zoe", "Martin"]
 
+# 1 - for / len
+nb = 0
+for n in noms:
+    nb = len(n) + nb
+print("Nombre de caractères total : ", nb)
+print()
+
+# 2 - completion de liste + sum
+list_nom =  [len(nom) for nom in noms]
+print("Nombre de caractère total avec comprehension de liste : ", sum(list_nom))
+
+# 3 - join / len
+nom_join = "".join(noms)
+print("Nombre total de caractère : ", len(nom_join))
+
+# --- Fonction zip ---
+pizza_nom = ("4 fromages", "Calzone", "Hawai")
+pizzas_prix = (10.5, 11, 8)
+
+noms_prix = list(zip(pizza_nom, pizzas_prix)) # fusionne deux listes en associant nom et prix
+print(noms_prix)
+
+unzipped = list(zip(*noms_prix)) # sépare des listes
+
+# --- le set ---
+noms = ["jean", "Sophie", "Martin", "Christophe", "Zoe", "Martin"]
+set_noms = set(noms) #garanti l'ensemble des éléments comme unique, on peut l'énumérer mais pas l'indexer soit on peut boucler
+print(set_noms)
+# list(set(noms)) -> permet de réindexer en le transformant en liste tout en ayant pas de doublon
+
+# --- Examen ---
+a = [{"nom": "Pierre", "age": 20}, {"nom": "Jean", "age": 15}, {"nom": "Marie", "age": 30}]
+ 
+b = sum([len(i["nom"]) for i in a])
+ 
+print(b)
