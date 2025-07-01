@@ -10,17 +10,26 @@
 
 # --- DEFINITION ---
 class Personne:
-    def __init__(self, nom: str, age: int): #constructeur
+    def __init__(self, nom: str="", age: int=0): #constructeur
         self.nom = nom
         self.age = age
-        print("Constructeur personne " + nom)
+        if nom == "":
+            self.DemanderNom()
+        print("Constructeur personne " + self.nom)
     
     def SePresenter(self):
-        print("Bonjour, je m'appelle " + self.nom + ", j'ai " + str(self.age) + " ans")
-        if self.EstMajeur():
-            print("Je suis majeur")
+        info_perso = "Bonjour, je m'appelle " + self.nom
+        if self.age != 0:
+            info_perso += ", j'ai " + str(self.age) + " ans"
+            print(info_perso)
         else:
-            print("Je suis mineur")
+            print(info_perso)
+        
+        if self.age != 0:
+            if self.EstMajeur():
+                print("Je suis majeur")
+            else:
+                print("Je suis mineur")
     
     def AutreFonction():
         print("Autre fonction")
@@ -31,17 +40,30 @@ class Personne:
             return True
         else:
             return False"""
+    def DemanderNom(self):
+        self.nom = input("Quelle est ton nom ?")
 
 # --- UTILISATION ---
-personne1 = Personne("Toto", 30)
-personne2 = Personne("Jean", 15)
+#personne1 = Personne(age=20)
+#personne2 = Personne("Jean", 15)
 
-personne1.SePresenter() #méthode d'instance
-personne2.SePresenter()
+liste_personnes = [Personne(age=20), Personne("Jean", 15)]
+print("Liste 1")
+for personne in liste_personnes:
+    personne.SePresenter()
 
-Personne.AutreFonction() #méthode de classe
-print("estMajeur : ", personne1.EstMajeur())
-print("estMajeur : ", personne2.EstMajeur())
+#liste_personnes[0].SePresenter()
+print("Liste 2")
+personne4 = Personne(age=20)
+liste_personnes.append(personne4)
+for personne in liste_personnes:
+    personne.SePresenter()
+#personne1.SePresenter() #méthode d'instance
+#personne2.SePresenter()
+
+#Personne.AutreFonction() #méthode de classe
+#print("estMajeur : ", personne1.EstMajeur())
+#print("estMajeur : ", personne2.EstMajeur())
 
 
 '''def afficher_info_pers(nom, age):
