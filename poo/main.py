@@ -9,7 +9,21 @@
 
 
 # --- DEFINITION ---
-class Personne:
+class EtreVivant: # class parent
+    ESPECE_ETRE_VIVANT = "(Etre vivant non Identifié)"
+
+    def AfficherInfoEtreVivant(self):
+        print("Infos être vivant :" + self.ESPECE_ETRE_VIVANT)
+
+
+class Chat(EtreVivant): # Notion d'héritage, class enfant
+    ESPECE_ETRE_VIVANT = "Chat (Mammifère félin)"
+
+
+
+class Personne(EtreVivant): # class enfant
+    ESPECE_ETRE_VIVANT = "Humain (Mammifère Homo sapiens)" # variable de classe (1 pour toute la classe), pratique pour faire des modif de tous le monde d'un coup
+
     def __init__(self, nom: str="", age: int=0): #constructeur
         self.nom = nom
         self.age = age
@@ -43,11 +57,23 @@ class Personne:
     def DemanderNom(self):
         self.nom = input("Quelle est ton nom ?")
 
+class Etudiant(Personne):
+    def __init__(self, nom: str, age: int, etudes: str): #constructeur
+        super().__init__(nom, age)
+        self.etudes = etudes
+    
+    def SePresenter(self):
+        super().SePresenter()
+        print("Je suis etudiant en " + self.etudes)
+        #return super().SePresenter()
+
+
 # --- UTILISATION ---
 #personne1 = Personne(age=20)
 #personne2 = Personne("Jean", 15)
 
-liste_personnes = [Personne(age=20), Personne("Jean", 15)]
+liste_personnes = [Personne("Jean", 20), 
+                   Personne("Jean", 15)]
 print("Liste 1")
 for personne in liste_personnes:
     personne.SePresenter()
@@ -58,6 +84,14 @@ personne4 = Personne(age=20)
 liste_personnes.append(personne4)
 for personne in liste_personnes:
     personne.SePresenter()
+    personne.AfficherInfoEtreVivant()
+
+
+chat = Chat()
+chat.AfficherInfoEtreVivant()
+
+etudiant = Etudiant("Leila", 19, "informatique")
+etudiant.SePresenter()
 #personne1.SePresenter() #méthode d'instance
 #personne2.SePresenter()
 
