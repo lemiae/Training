@@ -86,3 +86,9 @@ q1 = Questionnaire(questions)
 q1.lancer()
 
 #poser_question("Quelle est la capitale de la France ?", "Marseille", "Nice", "Paris", "Nantes", "c")
+
+
+
+#IsInstance : Vérifier les types
+# isinstance(age, int): -> en paramètre on rentre la viarible puis le type à tester
+

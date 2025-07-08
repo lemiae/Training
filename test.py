@@ -201,3 +201,35 @@ def f1(n):
   f1(n+1)
  
 f1(1)
+
+
+class Personne:
+    def __init__(self, nom: str):
+        self.nom = nom
+ 
+    def se_presenter(self, age):
+        print("Bonjour, je m'appelle " + self.nom + ", j'ai " + str(age) + " ans")
+ 
+personne1 = Personne("Jean")
+personne1.se_presenter(20)
+ 
+personne2 = Personne("Emilie")
+personne2.se_presenter(25)
+
+class Animal:
+  def parler(self):
+    print("Rhhhhhh")
+ 
+class Chat(Animal):
+  def parler(self):
+    print("Miaouuu")
+ 
+class Chien(Animal):
+  def aboyer(self):
+    print("Woof")
+ 
+chat = Chat()
+chat.parler()
+ 
+chien = Chien()
+chien.parler()

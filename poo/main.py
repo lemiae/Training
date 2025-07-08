@@ -1,3 +1,4 @@
+import copy
 
 # --- La POO ---
 # Difference prog impérative / objet
@@ -56,6 +57,11 @@ class Personne(EtreVivant): # class enfant
             return False"""
     def DemanderNom(self):
         self.nom = input("Quelle est ton nom ?")
+    
+    def __eq__(self, other):# Avec ça on peut comparer deux objets mais ici avec leur valeur
+        if self.nom == other.nom and self.age == other.age:
+            return True
+        return False
 
 class Etudiant(Personne):
     def __init__(self, nom: str, age: int, etudes: str): #constructeur
@@ -106,4 +112,16 @@ etudiant.SePresenter()
 def demander_nom_pers():
     nom = input("Quel est votre nom ?")
     return nom'''
+
+personne1 = Personne("Jacque", 30)
+personne2 = Personne("Michel", 29)
+personne1.SePresenter()
+
+personne2 = copy.copy(personne1) #On peut aussi utilise deepcopy pour faire une copy plus poussé
+personne2.SePresenter()
+# Pour comparer deux personnes on peut utiliser le is :
+# PAr défaut il compare les objets, pas les valeurs entré
+print(personne1 is personne2)
+
+
 
