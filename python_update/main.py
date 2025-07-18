@@ -49,4 +49,20 @@ for personne in personnes:
         case {"nom": nom, "infos": (age, profession)}:
             print(f"Je m'appelle {nom}, j'ai {age} ans et je suis {profession}")
 
-# --- MESSAGES D'ERREUR ---
+# --- UNION DE TYPES ---
+
+def operation_speciale(a : int | float):
+    if isinstance(a, int) or isinstance(a, float):
+        return a * 2
+    elif isinstance(a, str):
+        return a * 3
+
+print(operation_speciale(2))
+
+# --- LONGUEUR DES ZIP ---
+
+noms = ("Jean", "Sophie", "Martin", "Christophe", "Zoe", "Martin")
+ages = (20, 21, 22, 23, 24, 25)
+
+noms_ages = zip(noms, ages)
+print(list(noms_ages))
