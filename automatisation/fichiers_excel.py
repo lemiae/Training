@@ -1,6 +1,7 @@
 # --- FICHIERS EXCEL ---
 
 import openpyxl
+import openpyxl.chart
 
 wb = openpyxl.load_workbook("octobre.xlsx")
 print(wb.sheetnames)
@@ -36,3 +37,35 @@ add_data_from_wb(wb2, donnees)
 add_data_from_wb(wb3, donnees)
 
 print(donnees)
+
+# --- GENERER UN FICHIER ---
+
+wb_sortie = openpyxl.Workbook()
+sheet = wb_sortie.active
+sheet["A1"] = "Article"
+sheet["B1"] = "Octobre"
+sheet["C1"] = "Novembre"
+sheet["D1"] = "Decembre"
+
+row = 2
+for i in donnees.items():
+    #print(i)
+    nom_article = i[0]
+    ventes = i[1]
+    sheet.cell(row, 1).value = nom_article
+    for j in range(2, len(ventes)):
+        sheet.cell(row, 2+j).value = ventes[j]
+
+    row += 1
+
+# --- GRAPHIQUES ---
+
+chart_ref = openpyxl.chart.Reference(sheet, min_col=2, min_row=2, max_col=sheet.max_column, max_row=2)
+chart_serie = openpyxl.chart.Series(chart_ref, title="Total ventes €")
+chart = openpyxl.chart.BarChart()
+chart.title = "Evolution du prix des pommes"
+chart.append(chart_serie)
+
+sheet.add_chart(chart, "F2")
+
+wb_sortie.save("total_ventes_trimestre.xlsx")
