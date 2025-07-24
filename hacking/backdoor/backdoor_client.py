@@ -30,6 +30,8 @@ while True:
 
     if not reponse or len(reponse) == 0:
         reponse = ""
+    
+    
     s.sendall(reponse.encode())
 
 s.close()
