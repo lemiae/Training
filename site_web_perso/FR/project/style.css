@@ -159,3 +159,50 @@ img.img-profil2 {
     height: 250px;
     object-fit: cover;
 }
+
+div.barre_vertical {
+    height: 50px;
+    width: 4px;
+    background-color: var(--color1);
+    margin-right: 8px;
+}
+
+.col-portfolio {
+    width: 45%;
+}
+
+h2.end-part {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div.frame {
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+table.content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+td.left {
+    padding-right: 20px;
+}
+
+img.cover-profil2 {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 0px
+}
