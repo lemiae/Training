@@ -5,7 +5,7 @@
 :root {
     --color1: rgb(156, 190, 245);
     --color2: aliceblue;
-    --color3: #F4F4F4;
+    --color3: #f4f4f4;
 }
 
 body {
@@ -20,7 +20,7 @@ iframe {
 }
 
 div.cover {
-    background: url(cover_overlay.png) no-repeat center/cover,url(cover.jpg) no-repeat center/cover;
+    background: url(cover_overlay.png) no-repeat center/cover,url(cover2.jpg) no-repeat center/cover;
     height: 360px
 }
 
@@ -36,7 +36,7 @@ img.cover-profil {
 }
 
 h1 {
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 42px;
     margin-top: 10px;
@@ -44,7 +44,7 @@ h1 {
 }
 
 div.cover p {
-    color: lightgray;
+    color: rgb(11, 25, 54);
     text-align: center;
     margin-top: 5px;
     font-size: 14px;
@@ -70,7 +70,7 @@ div.cover-contact p:first-child {
 }
 
 div.cover-contact * {
-    color: white;
+    color: rgb(11, 25, 54);
     font-size: 14px;
 }
 
@@ -83,6 +83,12 @@ a.contact-button {
     display: inline-block;
     margin-top: 18px;
     font-size: 14px;
+}
+
+a.contact-button-portfolio {
+    position: absolute; 
+    right: 20px; 
+    top: 5px;
 }
 
 a.contact-button:hover {
@@ -135,12 +141,13 @@ h2 {
     margin-top: 0px;
 }
 
-.col40 {
+img.col-contenu {
     width: 40%;
 }
 
-.col60 {
+div.col-contenu {
     width: 60%;
+    padding-left: 16px;
 }
 
 .float-right {
@@ -209,11 +216,12 @@ img.cover-profil2 {
     position: relative;
     left: 50%;
     margin-left: -50px;
+    margin-right: 50px;
     margin-top: 0px
 }
 
 div.portfolio-header {
-    background: url(header.jpg) no-repeat center/cover;
+    background: url(cover2.jpg) no-repeat center/cover;
     height: 90px;
     position: relative;
 }
@@ -221,7 +229,7 @@ div.portfolio-header {
 p.portfolio-header-title {
     font-size: 26px;
     font-weight: bold;
-    color: white;
+    color: rgb(11, 25, 54);
     padding-top: 4px;
     padding-left: 8px;
 }
@@ -248,7 +256,11 @@ img.portfolio {
     max-width: 550px;
 }
 
-@media only screen and (max-width:768px) {
+.display-mobile {
+    display: none;
+}
+
+@media only screen and (max-width:767px) {
 
     img.cover-profil {
     height: 90px;
@@ -280,4 +292,77 @@ img.portfolio {
     h2 {
     font-size: 30px;
     }
+
+    img.col-contenu {
+    width: 100%;
+    }
+
+    div.col-contenu {
+        width: 100%;
+        padding-left: 16px;
+        margin-top: 20px;
+    }
+
+    .col-portfolio {
+    width: 100%;
+    margin-bottom: 20px;
+    }
+
+    div.frame {
+        margin: auto;
+        padding: auto;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    h2.end-part {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    }
+
+    img.cover-profil2 {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    left: 50%;
+    /*margin-left: -50px;*/
+    margin-right: 0;
+    margin-top: 0px
+    }
+
+    p.portfolio-header-title {
+    font-size: 19px;
+    padding-top: 10px;
+    padding-left: 4px;
+    }
+
+    a.contact-button {
+    padding: 7px 12px;
+    margin-top: 22px;
+    font-size: 12px;
+    }
+
+    a.contact-button-portfolio {
+    right: 8px; 
+    }
+
+    h1.portfolio {
+    font-size: 40px;
+    }
+
+    h2.portfolio {
+        font-size: 22px;
+    }
+
+    img.portfolio {
+    width: 100%;
+    max-width: 475px;
+    }
+
+    .display-mobile {
+        display: block;
+    }
+
 }
